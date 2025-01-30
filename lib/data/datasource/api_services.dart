@@ -10,11 +10,9 @@ class ApiService {
   );
 
   Future<Map<String, dynamic>> fetchHomeData() async {
-    print("DATA IS CAALED IN API");
     try {
       Response response = await _dio.get("/home-sections");
       if (response.statusCode == 200) {
-        print("RESPONCE IS HERE${response.data}");
         return response.data['data'];
       } else {
         throw Exception("Failed to load data");

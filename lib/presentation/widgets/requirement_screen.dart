@@ -22,56 +22,53 @@ class RequirementScreen extends StatelessWidget {
             ),
             GridView.builder(
               shrinkWrap: true,
-              itemCount: (category?.length ?? 0) + 1,  // Add 1 to show the "View All" button
+              itemCount: (category?.length ?? 0) + 1,
               itemBuilder: (_, index) {
                 if (index == (category?.length ?? 0)) {
-                  // Display the "View All" button at the 8th position (index = category.length)
                   return _buildViewAllButton();
                 } else {
-                  // Display category items
-                  return _buildRequirementButton(category?[index].name.toString().toTitleCase() ?? '');
+                  return _buildRequirementButton(
+                      category?[index].name.toString().toTitleCase() ?? '');
                 }
               },
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 2.8,  // You can adjust this if needed
+                childAspectRatio: 2.8,
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 10,
               ),
             ),
-
-
           ],
         ),
       ),
     );
   }
+
   Widget _buildViewAllButton() {
     return Container(
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: ColorPalette.primaryColor,
-        borderRadius: BorderRadius.circular(10)
+          color: ColorPalette.primaryColor,
+          borderRadius: BorderRadius.circular(8)),
+      child: Text(
+        'View All',
+        style: TextStyle(
+            fontWeight: FontWeight.w500,
+            fontSize: 12,
+            color: ColorPalette.whiteColor),
       ),
-      child: Text('View All',
-      style: TextStyle(
-        fontWeight: FontWeight.w500,
-        fontSize: 12,
-        color: ColorPalette.whiteColor
-      ),),
     );
   }
 
-
-  Widget _buildRequirementButton(String text, {bool isViewAll = false}) {
+  Widget _buildRequirementButton(String text) {
     return Container(
       decoration: BoxDecoration(
-        color: isViewAll ? Colors.green : Colors.white,
+        color: ColorPalette.whiteColor,
         borderRadius:
-            BorderRadius.circular(8.0), // Rounded corners for the button
+            BorderRadius.circular(8.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: ColorPalette.blackColor.withOpacity(0.1),
             blurRadius: 5,
             offset: Offset(0, 2),
           ),
@@ -83,7 +80,7 @@ class RequirementScreen extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 12,
-            fontWeight: FontWeight.w500, // Matches 700 weight
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),

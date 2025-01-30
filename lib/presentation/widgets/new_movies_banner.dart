@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../core/utils/color_palette.dart';
+
 class NewMoviesBanner extends StatefulWidget {
   NewMoviesBanner({super.key, this.title, this.sectionFour});
   final String? title;
@@ -19,7 +21,6 @@ class _NewMoviesBannerState extends State<NewMoviesBanner> {
 
   final CarouselSliderController _controllerPoster = CarouselSliderController();
 
-  // Cache manager instance
   final CacheManager _cacheManager = DefaultCacheManager();
 
   Future<ImageProvider> _getImage(String imageUrl) async {
@@ -61,17 +62,14 @@ class _NewMoviesBannerState extends State<NewMoviesBanner> {
                   future: _getImage(banner.media ?? ''),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      // Show shimmer while image is loading
                       return Shimmer.fromColors(
                         baseColor: Colors.grey[300]!,
                         highlightColor: Colors.grey[100]!,
-                        child: ShadowCard(image: null), // Placeholder card
+                        child: ShadowCard(image: null),
                       );
                     } else if (snapshot.hasError) {
-                      // In case of error, show a placeholder
-                      return ShadowCard(image: null); // Placeholder card
+                      return ShadowCard(image: null);
                     } else {
-                      // Display the image after loading
                       return ShadowCard(image: banner.media);
                     }
                   },
@@ -80,8 +78,7 @@ class _NewMoviesBannerState extends State<NewMoviesBanner> {
             );
           }).toList(),
         ),
-        SizedBox(height: 10), // Spacing between carousel and dots
-        // Dots Indicator
+        SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: widget.sectionFour!.asMap().entries.map((entry) {
@@ -94,7 +91,7 @@ class _NewMoviesBannerState extends State<NewMoviesBanner> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndexPoster == entry.key
-                      ? Colors.black
+                      ? ColorPalette.blackColor
                       : Color(0xffD9D9D9),
                 ),
               ),

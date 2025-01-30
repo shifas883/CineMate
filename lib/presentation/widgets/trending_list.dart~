@@ -24,20 +24,17 @@ class TrendingList extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        SizedBox(
-          height: 250,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            itemCount: sectionOne?.length,
-            itemBuilder: (context, index) {
-              return TrendingCard(
-                image: sectionOne?[index].image,
-                title: sectionOne?[index].title,
-                description: sectionOne?[index].description,
-              );
-            },
-          ),
+        ListView.builder(
+          scrollDirection: Axis.horizontal,
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          itemCount: sectionOne?.length,
+          itemBuilder: (context, index) {
+            return TrendingCard(
+              image: sectionOne?[index].image,
+              title: sectionOne?[index].title,
+              description: sectionOne?[index].description,
+            );
+          },
         ),
       ],
     );

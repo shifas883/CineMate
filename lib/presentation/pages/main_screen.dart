@@ -27,7 +27,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    _loadCachedData(); // Load cached data first
+    _loadCachedData();
     context.read<FetchHomeDataBloc>().add(FetchHomeData());
   }
 
@@ -68,10 +68,10 @@ class _MainScreenState extends State<MainScreen> {
         child: BlocBuilder<FetchHomeDataBloc, FetchHomeDataState>(
           builder: (context, state) {
             if (state is HomeLoading) {
-              return _buildShimmerLoading(); // Show shimmer effect while loading
+              return _buildShimmerLoading();
             }
             if (state is HomeLoaded) {
-              _cacheData(jsonEncode(state.movies)); // Cache the loaded data
+              _cacheData(jsonEncode(state.movies));
               return _buildHomeContent(state);
             }
             if (state is HomeError) {
@@ -91,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: List.generate(
             5,
-                (index) => Padding(
+            (index) => Padding(
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
               child: Shimmer.fromColors(
                 baseColor: Colors.grey[300]!,
@@ -100,7 +100,7 @@ class _MainScreenState extends State<MainScreen> {
                   height: 150,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: ColorPalette.whiteColor,
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
@@ -152,11 +152,10 @@ class _MainScreenState extends State<MainScreen> {
               sectionData5: state.movies.section5data,
               title: state.movies.sectionTitles?[0].section5Name,
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 50),
           ],
         ),
       ),
     );
   }
 }
-

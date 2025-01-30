@@ -22,7 +22,7 @@ class TopRatedList extends StatelessWidget {
           height: 10,
         ),
         SizedBox(
-          height: 150,
+          height: 125,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             padding: EdgeInsets.symmetric(horizontal: 16),

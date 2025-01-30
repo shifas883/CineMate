@@ -9,8 +9,8 @@ class CustomAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
-      surfaceTintColor: Colors.white,
+      backgroundColor: ColorPalette.whiteColor,
+      surfaceTintColor: ColorPalette.whiteColor,
       foregroundColor: Colors.grey,
       elevation: 0,
       leading: IconButton(

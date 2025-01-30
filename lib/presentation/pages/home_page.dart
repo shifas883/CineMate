@@ -99,7 +99,7 @@ class _HomePageScreenState extends State<HomePageScreen> {
       hideNavigationBarWhenKeyboardAppears: true,
       popBehaviorOnSelectedNavBarItemPress: PopBehavior.once,
       hideOnScrollSettings: HideOnScrollSettings(
-        hideNavBarOnScroll: false, // Prevent hiding nav bar on scroll
+        hideNavBarOnScroll: false,
         scrollControllers: _scrollControllers,
       ),
       padding: const EdgeInsets.only(top: 8),
@@ -116,11 +116,11 @@ class _HomePageScreenState extends State<HomePageScreen> {
           );
           return false;
         }
-        // Exit the app
+
         SystemNavigator.pop();
         return true;
       },
-      backgroundColor: Colors.white,
+      backgroundColor: ColorPalette.whiteColor,
       animationSettings: const NavBarAnimationSettings(
         navBarItemAnimation: ItemAnimationSettings(
           duration: Duration(milliseconds: 300),
@@ -140,9 +140,9 @@ class _HomePageScreenState extends State<HomePageScreen> {
       navBarHeight: kBottomNavigationBarHeight,
       navBarStyle: NavBarStyle.style15,
       onItemSelected: (index) {
-        // Block navigation to other tabs
+
         if (index != 0) {
-          _controller.index = 0; // Stay at index 0
+          _controller.index = 0;
         }
       },
     );

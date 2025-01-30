@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../core/utils/color_palette.dart';
+
 class BannerCarouselClass extends StatefulWidget {
   BannerCarouselClass({super.key, this.banners});
   final List<BannerList>? banners;
@@ -16,7 +18,6 @@ class _BannerCarouselClassState extends State<BannerCarouselClass> {
   int currentIndex = 0;
   final CarouselSliderController _controller = CarouselSliderController();
 
-  // Cache manager instance
   final CacheManager _cacheManager = DefaultCacheManager();
 
   Future<ImageProvider> _getImage(String imageUrl) async {
@@ -47,27 +48,24 @@ class _BannerCarouselClassState extends State<BannerCarouselClass> {
               future: _getImage(banner.image ?? ''),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  // Show shimmer while image is loading
                   return Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: ColorPalette.whiteColor,
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
                   );
                 } else if (snapshot.hasError) {
-                  // In case of error, show a placeholder
                   return Container(
                     color: Colors.grey,
                     child: Center(
-                      child: Icon(Icons.error, color: Colors.white),
+                      child: Icon(Icons.error, color: ColorPalette.whiteColor),
                     ),
                   );
                 } else {
-                  // Display the image after loading
                   return Container(
                     decoration: BoxDecoration(
                       image: DecorationImage(

@@ -22,7 +22,7 @@ class ConfirmButton extends StatelessWidget {
         ),
         child: Center(child: Text(text,
           style: TextStyle(
-              color: Colors.white,
+              color: ColorPalette.whiteColor,
               fontWeight: FontWeight.w600
           ),)),
       ),

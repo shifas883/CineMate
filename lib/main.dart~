@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized(); // Ensures plugins are initialized
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isFirstLaunch = prefs.getBool('isFirstLaunch') ?? true;
 

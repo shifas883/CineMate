@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shadow_overlay/shadow_overlay.dart';
 
+import '../../../core/utils/color_palette.dart';
+
 class ShadowCard extends StatelessWidget {
   const ShadowCard({super.key, this.image});
 
@@ -14,7 +16,7 @@ class ShadowCard extends StatelessWidget {
         width:800,
         fit: BoxFit.cover,
       ),
-      shadowColor: Colors.white,
+      shadowColor: ColorPalette.whiteColor,
       shadowWidth: 800,
       shadowHeight: 150,
     );

@@ -8,7 +8,7 @@ class CustomDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.white,
+        color: ColorPalette.whiteColor,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -21,7 +21,7 @@ class CustomDrawer extends StatelessWidget {
                 child: Text(
                   'Cinemate App',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: ColorPalette.whiteColor,
                     fontSize: 26,
                     fontWeight: FontWeight.w600
                   ),
